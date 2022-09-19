@@ -1,4 +1,4 @@
-
+const apiKey = '729d4f97c05ea2a44cbd97e71a6e7d0a'
 const apiCountryURL = 'https://countryflagsapi.com/png/'
 
 const cityInput = document.querySelector('#city-input')
@@ -16,13 +16,11 @@ const weatherContainer = document.querySelector('#weather-data')
 const weatherSuggestions = document.querySelector('#weather-suggestions')
 
 const dataSuggestions = [
-  'Viena', 
-  'Zurique', 
-  'Genebra', 
-  'Osaka', 
-  'Curitiba', 
-  'Vancouver', 
-  'Copanhague'
+  'New York',
+  'Genebra',
+  'Osaka',
+  'Curitiba',
+  'Vancouver'
 ]
 
 //Functions
@@ -33,6 +31,11 @@ const getWeatherData = async city => {
   const data = await res.json()
 
   return data
+}
+
+function getValue(id) {
+  weatherSuggestions.classList.add('hide')
+  showWeatherData(dataSuggestions[id])
 }
 
 const showWeatherData = async city => {
@@ -50,11 +53,17 @@ const showWeatherData = async city => {
   windElement.innerHTML = `${data.wind.speed}km/h`
 
   weatherContainer.classList.remove('hide')
-
-  //weatherSuggestions.innerHTML =
 }
 
 //Events
+weatherSuggestions.classList.remove('hide')
+
+dataSuggestions.map((nome, i) => {
+  let id = '<div id="' + i + '"'
+  weatherSuggestions.innerHTML +=
+    id + ' onClick="' + 'getValue(' + i + ')">' + nome + '</div><br>'
+})
+
 searchBtn.addEventListener('click', e => {
   e.preventDefault()
 

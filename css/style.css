@@ -107,14 +107,14 @@ body {
 
 #weather-suggestions {
   color: #594cee;
-  display: flex;
-  justify-content: space-between;
   margin-top: 1rem;
 }
+
 #weather-suggestions div {
-  font-size: 18px;
+  font-size: 20px;
   background-color: #fdfdfd;
   padding: 0.6rem;
   border-radius: 4px;
   cursor: pointer;
+  text-align: center;
 }
